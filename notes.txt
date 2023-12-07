@@ -1,0 +1,10 @@
+Module 3.2 restful APIs
+
+CRUD
+create: POST/users
+read: GET/users GET/users/:id
+update: PUT/users/:id
+delete: DELETE/users/:id
+
+M2.3-codercomm-fe
+https://github.com/thuphan27379/virgil-web-solutions-public/tree/main/module-2/M2.3-codercomm-fe
