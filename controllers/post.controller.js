@@ -53,7 +53,7 @@ postController.updateSinglePost = catchAsync(async (req, res, next) => {
   if (!post.author.equals(currentUserId))
     throw new AppError(400, "only author can edit post", "update post error");
 
-  //// process -xu ly
+  //// process - xu ly
   const allows = ["content", "image"];
   allows.forEach((field) => {
     if (req.body[field] !== undefined) {
@@ -62,12 +62,12 @@ postController.updateSinglePost = catchAsync(async (req, res, next) => {
   });
   await post.save();
 
-  //// response result", success or not
+  //// response result, success or not
   return sendResponse(
     res, // res
     200, // status
-    true, // success post, // data
-    post,
+    true, // success post,
+    post, // data
     null, // error
     "update post successfully" // message
   );
@@ -99,7 +99,7 @@ postController.getSinglePost = catchAsync(async (req, res, next) => {
   );
 });
 
-// get all posts and user can see with pagnination ////////////////////////
+// get all posts and user can see with pagination ////////////////////////
 postController.getPosts = catchAsync(async (req, res, next) => {
   // return res.send(req.userId);
   const currentUserId = req.userId;
@@ -145,7 +145,7 @@ postController.getPosts = catchAsync(async (req, res, next) => {
 
   // return posts and page
   let posts = await Post.find(filterCriteria)
-    .sort({ createtAt: -1 })
+    .sort({ createdAt: -1 })
     .skip(offset)
     .limit(limit)
     .populate("author");
@@ -153,7 +153,7 @@ postController.getPosts = catchAsync(async (req, res, next) => {
   return sendResponse(res, 200, true, { posts, totalPages, count }, null, "");
 });
 
-// delete a post
+// delete a post /////////////////
 postController.deleteSinglePost = catchAsync(async (req, res, next) => {
   //// get data from requests - nhan yeu cau
   const currentUserId = req.userId;
@@ -204,7 +204,7 @@ postController.getCommentsOfPost = catchAsync(async (req, res, next) => {
   const offset = limit * (page - 1);
 
   const comments = await Comment.find({ post: postId }).sort(
-    { createtAt: -1 }.limit(limit).populate("author")
+    { createdAt: -1 }.limit(limit).populate("author")
   );
 
   //// response result

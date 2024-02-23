@@ -43,7 +43,7 @@ module.exports = router;
 @route PUT/users/:id/ - update user profile
 
 @route POST/posts - create a new post
-@route GET/posts/user/userID?page=1&limit=10 -get all posts and user can see with pagnination
+@route GET/posts/user/userID?page=1&limit=10 -get all posts and user can see with pagination
 @route GET/posts/:id - get detail of a post
 @route PUT/posts/:id - update a post************
 @route DELETE/posts/:id - delete a post************
