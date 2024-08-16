@@ -67,7 +67,7 @@ userController.getUsers = catchAsync(async (req, res, next) => {
   const offset = limit * (page - 1);
 
   let users = await User.find(filterCriteria)
-    .sort({ createtAt: -1 })
+    .sort({ createdAt: -1 })
     .skip(offset)
     .limit(limit);
 
